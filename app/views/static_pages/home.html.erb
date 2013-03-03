@@ -1,6 +1,11 @@
+<div class="center hero-unit">
+  <h1>Welcome to Django</h1>
 
-<% provide(:title, 'Home') %>
-<h1>Test App for TCMS</h1>
-<p>
-  This is the home page for the TCMS app.
-</p>
+  <h2>
+    This is the home page for the TCMS
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
