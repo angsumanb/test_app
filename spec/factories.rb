@@ -20,4 +20,9 @@ FactoryGirl.define do
     end
   end
 
+  factory :project do
+    sequence(:name)  { |n| "Project #{n}" }
+    sequence(:description) { |n| "project_#{n}_description"}
+  end
+
 end
