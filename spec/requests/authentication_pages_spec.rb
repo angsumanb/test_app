@@ -81,6 +81,7 @@ utilities.rb from spec/support/
 	  it { should have_selector('title', text: 'Sign in') }
 	end
       end
+
       
       describe "when attempting to visit a protected page" do
         before do
