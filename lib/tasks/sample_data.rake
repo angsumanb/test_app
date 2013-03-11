@@ -15,11 +15,12 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
-
-    users = User.all(limit: 6)
-    50.times do
-      content = Faker::Lorem.sentence(5)
-      users.each { |user| user.microposts.create!(content: content) }
+  
+   99.times do |n|
+      name  = Faker::Name.name
+      description = "project-#{n+1} description"
+      Project.create!(name: name,
+                   description: description) 
     end
   end
 end

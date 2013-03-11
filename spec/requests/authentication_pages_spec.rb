@@ -44,6 +44,7 @@ utilities.rb from spec/support/
       it { should have_link('Profile', href: user_path(user)) }
       it { should have_link('Settings', href: edit_user_path(user)) }
       it { should have_link('Sign out', href: signout_path) }
+      it { should have_link('Projects', href: projects_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 
       describe "followed by checking - no sign up link on home page" do
@@ -63,6 +64,7 @@ utilities.rb from spec/support/
 
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
+      let(:project) { FactoryGirl.create(:project) }
 
       describe "in the Users controller" do
 
@@ -82,6 +84,28 @@ utilities.rb from spec/support/
 	end
       end
 
+      describe "in the Projects controller" do
+
+        describe "visiting the project creation page" do
+          before { visit new_project_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "visiting the edit page" do
+          before { visit edit_project_path(project) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "submitting to the update action" do
+          before { put project_path(project) }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "visiting the project index" do
+          before { visit projects_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+      end
       
       describe "when attempting to visit a protected page" do
         before do
@@ -118,6 +142,7 @@ utilities.rb from spec/support/
 
     describe "as non-admin user" do
       let(:user) { FactoryGirl.create(:user) }
+      let(:project) { FactoryGirl.create(:project) }
       let(:non_admin) { FactoryGirl.create(:user) }
 
       before { sign_in non_admin }
@@ -125,6 +150,11 @@ utilities.rb from spec/support/
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }
         specify { response.should redirect_to(root_path) }        
+      end
+      
+      describe "submitting a DELETE request to the Projects#destroy action" do
+        before { delete project_path(project) }
+        specify { response.should redirect_to(root_path) }
       end
     end
   end
