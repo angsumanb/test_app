@@ -5,8 +5,19 @@
       <h1>Project - 
       <%= @project.name %></h1>
        <p> <%= link_to "Edit project details", edit_project_path(params[:id]) %></p>
+       <p> <%= link_to "Create new Pod", new_pod_path(project_id: @project.id) %></p>
     </section>
   </aside>
+
+  <div class="span8">
+    <% if @project.pods.any? %>
+      <h3>Pods (<%= @project.pods.count %>)</h3>
+      <ol class="microposts">
+        <%= render @pods %>
+      </ol>
+      <%= will_paginate @pods %>
+    <% end %>
+  </div>
 </div>
 
 <!-- PENDING

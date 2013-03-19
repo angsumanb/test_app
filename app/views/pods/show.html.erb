@@ -1,0 +1,16 @@
+<% provide(:title,"Pod #{@pod.name}") %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>Pod - 
+      <%= @pod.name %></h1>
+       <p> <%= link_to "Edit pod details", edit_pod_path(params[:id]) %></p>
+    </section>
+  </aside>
+
+</div>
+
+<!-- PENDING
+Add a picture for a pod.
+See Gravatar for a user in app/views/users/show.html.erb
+-->

@@ -8,9 +8,11 @@ describe "Project pages" do
 
   describe "index" do
    let(:user) { FactoryGirl.create(:user) }
+   #let(:admin) { FactoryGirl.create(:admin) }
    let(:project) { FactoryGirl.create(:project) }
 
     before(:each) do
+      #sign_in admin 
       sign_in user
       visit projects_path
     end
@@ -43,7 +45,8 @@ describe "Project pages" do
           visit projects_path
         end
         
-        it { should have_link('delete', href: project_path(Project.first)) }
+        #it { should have_link('delete', href: project_path(Project.first)) }
+        it { should have_link('delete') }
         it "should be able to delete a project" do
           expect { click_link('delete') }.to change(Project, :count).by(-1)
         end
@@ -65,11 +68,31 @@ describe "Project pages" do
   end
 
   describe "project profile page" do
+
+   let(:user) { FactoryGirl.create(:user) }
     let(:project) { FactoryGirl.create(:project) }
-    before { visit project_path(project) }
+    let!(:pod1) { FactoryGirl.create(:pod, project: project, name: "Foo1", description: "pod description") }
+    let!(:pod2) { FactoryGirl.create(:pod, project: project, name: "Foo2", description: "pod description") }
+
+    before do 
+      sign_in user
+      visit project_path(project) 
+    end
+
 
     it { should have_selector('h1',    text: project.name) }
     it { should have_selector('title', text: project.name) }
+
+    describe "pods" do
+      it { should have_content(pod1.name) }
+      it { should have_content(pod2.name) }
+      it { should have_content(project.pods.count) }
+    end
+
+    describe "should have create pod link" do
+      #it { should have_link('Create new Pod', 'http://gravatar.com/emails') }
+      it { should have_link('Create new Pod', href: new_pod_path(project.id)) }
+    end
   end
 
   describe "create new project" do

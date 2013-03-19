@@ -24,5 +24,10 @@ FactoryGirl.define do
     sequence(:name)  { |n| "Project #{n}" }
     sequence(:description) { |n| "project_#{n}_description"}
   end
-
+ 
+  factory :pod do
+    sequence(:name) { |n| "Pod #{n}" }
+    sequence(:description) { |n| "pod_#{n}_description"}
+    project
+  end
 end

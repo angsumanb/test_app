@@ -106,7 +106,30 @@ utilities.rb from spec/support/
           it { should have_selector('title', text: 'Sign in') }
         end
       end
-      
+     
+      describe "in the Pods controller" do
+
+        describe "visiting the pod creation page" do
+          before { visit new_pod_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "visiting the edit page" do
+          before { visit edit_pod_path(pod) }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+
+        describe "submitting to the update action" do
+          before { put pod_path(pod) }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "visiting the pod index" do
+          before { visit pods_path }
+          it { should have_selector('title', text: 'Sign in') }
+        end
+      end
+ 
       describe "when attempting to visit a protected page" do
         before do
           visit edit_user_path(user)
