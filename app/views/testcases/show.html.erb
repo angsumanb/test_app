@@ -1,0 +1,22 @@
+<% provide(:title,"Testcase #{@testcase.name}") %>
+<div class="row">
+  <aside class="span4">
+    <section>
+     <h1>Suite - 
+      <%= @testcase.suite.name %></h1>
+      <p> <%= link_to "back to suite", suite_path(@testcase.suite) %></p>
+      <p> <%= link_to "back to pod", suite_path(@testcase.suite.pod) %></p>
+      <p> <%= link_to "back to pod", suite_path(@testcase.suite.pod.project) %></p>
+
+      <h1>Testcase - 
+      <%= @testcase.name %></h1>
+       <p> <%= link_to "Edit testcase details", edit_testcase_path(params[:id]) %></p>
+    </section>
+  </aside>
+
+</div>
+
+<!-- PENDING
+Add a picture for a testcase.
+See Gravatar for a user in app/views/users/show.html.erb
+-->

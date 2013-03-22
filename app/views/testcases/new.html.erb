@@ -1,0 +1,27 @@
+<% provide(:title, 'Create new testcase') %>
+<h1>Create new testcase</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@testcase) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      
+      <%= f.hidden_field  :suite_id, value: @suite.id %>      
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :type %>
+      <%= f.text_field :type %>
+
+      <%= f.label :priority %>
+      <%= f.text_field :priority %>
+      
+      <%= f.label :steps %>
+      <%= f.text_area :steps, size: "40*20" %>
+      
+</br>
+      <%= f.submit "Create new testcase", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

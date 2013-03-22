@@ -1,0 +1,19 @@
+<% provide(:title, "Edit pod") %> 
+<h1>Update pod details</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@pod) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :steps %>
+      <%= f.text_area :steps, size: "40*20" %>
+</br>
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

@@ -2,7 +2,7 @@ class Suite < ActiveRecord::Base
   attr_accessible :description, :name
 
   belongs_to :pod
-
+  has_many :testcases, dependent: :destroy
 
   before_save { |suite| suite.name = name.upcase }
 

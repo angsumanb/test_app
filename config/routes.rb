@@ -1,5 +1,7 @@
 TestApp::Application.routes.draw do
 
+  get "testcases/new"
+
   get "suites/new"
 
   resources :users
@@ -8,6 +10,7 @@ TestApp::Application.routes.draw do
   resources :projects
   resources :pods
   resources :suites
+  resources :testcases
 
   root to: 'static_pages#home' 
 
