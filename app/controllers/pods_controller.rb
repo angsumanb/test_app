@@ -5,6 +5,7 @@ class PodsController < ApplicationController
 
   def show
     @pod = Pod.find(params[:id])
+    @suites = @pod.suites.paginate(page: params[:page])
   end
 
   def new
@@ -40,7 +41,7 @@ class PodsController < ApplicationController
   def update 
     @pod = Pod.find(params[:id])
     if @pod.update_attributes(params[:pod])
-      flash[:success] = "Profile updated"
+      flash[:success] = "Pod updated"
       redirect_to @pod
     else
       render 'edit'

@@ -88,11 +88,25 @@ describe "Pod pages" do
    end
   
 describe "pod profile page" do
-    let(:pod) { FactoryGirl.create(:pod) }
+    let(:project) { FactoryGirl.create(:project) }
+    let(:pod) { FactoryGirl.create(:pod, project: project) }
+    
+    let!(:suite1) { FactoryGirl.create(:suite, pod: pod, name: "suite1", description: "suite description") }
+    let!(:suite2) { FactoryGirl.create(:suite, pod: pod, name: "suite2", description: "suite2 description") }
+
+   # let(:pod) { FactoryGirl.create(:pod) }
     before { visit pod_path(pod) }
 
+    it { should have_selector('h1',    text: project.name) }
+    it { should have_link('back to project', href: project_path(project)) }
     it { should have_selector('h1',    text: pod.name) }
     it { should have_selector('title', text: pod.name) }
+
+    describe "suites" do
+      it { should have_content(suite1.name) }
+      it { should have_content(suite2.name) }
+      it { should have_content(pod.suites.count) }
+    end
   end
   
 

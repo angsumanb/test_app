@@ -1,10 +1,13 @@
 TestApp::Application.routes.draw do
 
+  get "suites/new"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 #  resources :microposts, only: [:create, :destroy]
   resources :projects
   resources :pods
+  resources :suites
 
   root to: 'static_pages#home' 
 

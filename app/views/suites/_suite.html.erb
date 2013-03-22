@@ -1,0 +1,7 @@
+<li>
+  <%= link_to suite.name, suite %>
+  <% if current_user.admin?  %>
+    | <%= link_to "delete", suite, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

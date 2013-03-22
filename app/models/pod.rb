@@ -2,7 +2,7 @@ class Pod < ActiveRecord::Base
   attr_accessible :description, :name
 
   belongs_to :project
-
+  has_many :suites, dependent: :destroy
 
   before_save { |pod| pod.name = name.upcase }
 

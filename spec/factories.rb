@@ -30,4 +30,16 @@ FactoryGirl.define do
     sequence(:description) { |n| "pod_#{n}_description"}
     project
   end
+
+  factory :suite do
+    sequence(:name) { |n| "Suite #{n}" }
+    sequence(:description) { |n| "Suite_#{n}_description"}
+    pod
+  end
+
+  factory :testcase do
+    sequence(:name) { |n| "Testcase #{n}" }
+    sequence(:description) { |n| "testcase_#{n}_description"}
+    suite 
+  end
 end

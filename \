@@ -18,9 +18,9 @@
     <% if @pod.suites.any? %>
       <h3>Suites (<%= @pod.suites.count %>)</h3>
       <ol class="microposts">
-          <%= render @pod.suites %>
+          <%= render @suites %>
       </ol>
-        <%= will_paginate @suites %>
+        <%= will_paginate @pods %>
     <% end %>
   </div>
 </div>

@@ -1,0 +1,20 @@
+<% provide(:title,"Suite #{@suite.name}") %>
+<div class="row">
+  <aside class="span4">
+    <section>
+     <h1>Pod - 
+      <%= @suite.pod.name %></h1>
+      <p> <%= link_to "back to pod", pod_path(@suite.pod) %></p>
+
+      <h1>Suite - 
+      <%= @suite.name %></h1>
+       <p> <%= link_to "Edit suite details", edit_suite_path(params[:id]) %></p>
+    </section>
+  </aside>
+
+</div>
+
+<!-- PENDING
+Add a picture for a suite.
+See Gravatar for a user in app/views/users/show.html.erb
+-->
