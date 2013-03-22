@@ -83,11 +83,11 @@ describe "Pod pages" do
         it { should have_selector('h1',    text: 'Create new pod') }
         it { should have_selector('title', text: full_title('Create new pod')) }
 
-   DatabaseCleaner.clean
     end
    end
   
 describe "pod profile page" do
+    let(:user) { FactoryGirl.create(:user) }
     let(:project) { FactoryGirl.create(:project) }
     let(:pod) { FactoryGirl.create(:pod, project: project) }
     
@@ -95,7 +95,10 @@ describe "pod profile page" do
     let!(:suite2) { FactoryGirl.create(:suite, pod: pod, name: "suite2", description: "suite2 description") }
 
    # let(:pod) { FactoryGirl.create(:pod) }
-    before { visit pod_path(pod) }
+    before do 
+          sign_in user
+          visit pod_path(pod)
+    end
 
     it { should have_selector('h1',    text: project.name) }
     it { should have_link('back to project', href: project_path(project)) }
@@ -173,4 +176,5 @@ describe "create new pod" do
     end
   end
 
+   DatabaseCleaner.clean
 end
