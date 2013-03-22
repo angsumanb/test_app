@@ -1,15 +1,21 @@
 require 'spec_helper'
 #require 'ruby-debug'
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
+
 
 describe "Pod pages" do
 
   subject { page }
 
 
+ 
   describe "index" do
+
+
    let(:user) { FactoryGirl.create(:user) }
    let(:project) { FactoryGirl.create(:project) }
-   let(:pod) { FactoryGirl.create(:pod) }
+   let(:pod) { FactoryGirl.create(:pod, project: project) }
 
     before(:each) do
       sign_in user
@@ -21,8 +27,9 @@ describe "Pod pages" do
 
     describe "pagination" do
 
-      before(:all) { 31.times { FactoryGirl.create(:pod) } }
-      after(:all)  { Pod.delete_all }
+      before(:all) { 15.times { FactoryGirl.create(:pod, project: project) } }
+#no need now. using database_cleaner
+#      after(:all)  { Pod.delete_all }
 
       it { should have_selector('div.pagination') }
       
@@ -39,6 +46,8 @@ describe "Pod pages" do
 
       describe "as an admin user" do
         let(:admin) { FactoryGirl.create(:admin) }
+        let(:project) { FactoryGirl.create(:project) }
+        let(:pod) { FactoryGirl.create(:pod, project: project) }
         before do
           sign_in admin
           visit pods_path
@@ -52,38 +61,49 @@ describe "Pod pages" do
     end
   end
 
+
   describe "pod creation page" do
     let(:user) { FactoryGirl.create(:user) }
-      let(:pod) { FactoryGirl.create(:pod) }
       let(:project) { FactoryGirl.create(:project) }
+     
+      describe "without passing project ID" do
+        before do
+          sign_in user
+          visit new_pod_path
+        end
+        it { should have_selector('h1', text: 'All projects')}
+      end
 
-    before do
-      sign_in user
-      visit new_pod_path(@project.id)
+      describe "with passing project ID" do
+        before do
+          sign_in user
+          visit new_pod_path(project_id: project.id)
+        end
+
+        it { should have_selector('h1',    text: 'Create new pod') }
+        it { should have_selector('title', text: full_title('Create new pod')) }
+
+   DatabaseCleaner.clean
     end
-
-
-    it { should have_selector('h1',    text: 'Create new pod') }
-    it { should have_selector('title', text: full_title('Create new pod')) }
-  end
-
-  describe "pod profile page" do
+   end
+  
+describe "pod profile page" do
     let(:pod) { FactoryGirl.create(:pod) }
     before { visit pod_path(pod) }
 
     it { should have_selector('h1',    text: pod.name) }
     it { should have_selector('title', text: pod.name) }
   end
+  
 
-  describe "create new pod" do
+describe "create new pod" do
 
     let(:user) { FactoryGirl.create(:user) }
-    let(:pod) { FactoryGirl.create(:pod) }
     let(:project) { FactoryGirl.create(:project) }
     
     before do
       sign_in user
-     # visit new_pod_path(@project.id)
+      visit new_pod_path(project_id: project.id)
     end
 
     let(:submit) { "Create new pod" }
@@ -108,7 +128,9 @@ describe "Pod pages" do
 
   describe "edit" do
       let(:user) { FactoryGirl.create(:user) }
-      let(:pod) { FactoryGirl.create(:pod) }
+      let(:project) { FactoryGirl.create(:project) }
+      let(:pod) { FactoryGirl.create(:pod, project: project) }
+
     before do
       sign_in user
       visit edit_pod_path(pod)

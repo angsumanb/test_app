@@ -31,7 +31,7 @@ namespace :db do
       _m = 1
       description = Faker::Lorem.sentence(5)
 	  for project in projects do
-	    project.pods.create(description: description, name: name+"-"+"#{_m}")
+	    project.pods.create!(description: description, name: name+"-"+"#{_m}")
 	    _m = _m+1
 	  end
     end

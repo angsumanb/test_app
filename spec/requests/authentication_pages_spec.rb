@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
 
 describe "Authentication" do
 
@@ -45,6 +47,7 @@ utilities.rb from spec/support/
       it { should have_link('Settings', href: edit_user_path(user)) }
       it { should have_link('Sign out', href: signout_path) }
       it { should have_link('Projects', href: projects_path) }
+      it { should have_link('Pods', href: pods_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 
       describe "followed by checking - no sign up link on home page" do
@@ -65,6 +68,7 @@ utilities.rb from spec/support/
     describe "for non-signed-in users" do
       let(:user) { FactoryGirl.create(:user) }
       let(:project) { FactoryGirl.create(:project) }
+      let(:pod) { FactoryGirl.create(:pod, project: project) }
 
       describe "in the Users controller" do
 
@@ -181,4 +185,5 @@ utilities.rb from spec/support/
       end
     end
   end
+  DatabaseCleaner.clean
 end

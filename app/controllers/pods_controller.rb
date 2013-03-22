@@ -8,8 +8,12 @@ class PodsController < ApplicationController
   end
 
   def new
-    @project = Project.find(params[:project_id])
-    @pod = Pod.new
+    if (params[:project_id] != nil) 
+      @project = Project.find(params[:project_id])
+      @pod = Pod.new
+    else
+      redirect_to projects_path, notice: "Please select a project first."
+    end
   end
   
   def index
