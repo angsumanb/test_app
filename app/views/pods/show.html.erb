@@ -17,10 +17,11 @@
     <div class="span8">
     <% if @pod.suites.any? %>
       <h3>Suites (<%= @pod.suites.count %>)</h3>
+        <%= will_paginate @suites, class: "pagination pagination-right" %>
       <ol class="microposts">
           <%= render @suites %>
       </ol>
-        <%= will_paginate @suites %>
+        <%= will_paginate @suites, class: "pagination pagination-right" %>
     <% end %>
   </div>
 </div>

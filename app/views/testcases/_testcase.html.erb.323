@@ -1,0 +1,10 @@
+<li>
+  <%= link_to testcase.title, testcase  %>
+  <%= testcase.testtype  %>
+  <%= testcase.priority  %>
+  
+  <% if current_user.admin?  %>
+    | <%= link_to "delete", testcase, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

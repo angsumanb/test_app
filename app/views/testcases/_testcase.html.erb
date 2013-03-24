@@ -1,7 +1,10 @@
-<li>
-  <%= link_to testcase.title, testcase %>
+<tr>
+ <td> <%= testcase.id  %> </td>
+ <td> <%= link_to testcase.title, testcase  %> </td>
+ <td> <%= testcase.testtype  %> </td>
+ <td> <%= testcase.priority  %> </td>
+  
   <% if current_user.admin?  %>
-    | <%= link_to "delete", testcase, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+   <td>  <%= button_to "delete", testcase, method: :delete,  class: "btn btn-danger btn-small" , data: { confirm: "You sure?" } %>
+   </td> <% end %> 
+</tr>
