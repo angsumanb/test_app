@@ -5,14 +5,14 @@ DatabaseCleaner.strategy = :truncation
 describe Testcase do
   
   let(:suite) { FactoryGirl.create(:suite) }
-  before { @testcase = suite.testcases.build(title: "Lorem ipsum", steps: "testcase steps", type: "type1", priority: "priority1") }
+  before { @testcase = suite.testcases.build(title: "Lorem ipsum", steps: "testcase steps", testtype: "testtype1", priority: "priority1") }
 
   subject { @testcase }
 
   it { should respond_to(:title) }
   it { should respond_to(:steps) }
   it { should respond_to(:priority) }
-  it { should respond_to(:type) }
+  it { should respond_to(:testtype) }
   it { should respond_to(:estimate) }
   it { should respond_to(:preconditions) }
   it { should respond_to(:comments) }
@@ -32,8 +32,8 @@ describe Testcase do
     it { should_not be_valid }
   end
 
-  describe "when type is not present" do
-    before { @testcase.type = " " }
+  describe "when testtype is not present" do
+    before { @testcase.testtype = " " }
     it { should_not be_valid }
   end
  

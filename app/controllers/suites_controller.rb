@@ -5,6 +5,7 @@ class SuitesController < ApplicationController
 
   def show
     @suite = Suite.find(params[:id])
+    @testcases = @suite.testcases.paginate(page: params[:page])
   end
   
   def new

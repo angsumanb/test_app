@@ -88,16 +88,30 @@ describe "Suite pages" do
    end
   
 describe "suite profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+
     let(:pod) { FactoryGirl.create(:pod) }
     let(:suite) { FactoryGirl.create(:suite, pod: pod) }
 
-   # let(:suite) { FactoryGirl.create(:suite) }
-    before { visit suite_path(suite) }
+    let!(:testcase1) { FactoryGirl.create(:testcase, suite: suite, title: "testcase1", steps: "testcase steps", priority: "p1", testtype: "automated") }
+    let!(:testcase2) { FactoryGirl.create(:testcase, suite: suite, title: "testcase2", steps: "testcase steps", priority: "p2", testtype: "regression") }
 
-    it { should have_selector('h1',    text: pod.name) }
+   # let(:suite) { FactoryGirl.create(:suite) }
+    before do
+      sign_in user
+      visit suite_path(suite)
+    end 
+
+    it { should have_selector('h4',    text: pod.name) }
     it { should have_link('back to pod', href: pod_path(pod)) }
     it { should have_selector('h1',    text: suite.name) }
     it { should have_selector('title', text: suite.name) }
+
+    describe "testcases" do
+      it { should have_content(testcase1.title) }
+      it { should have_content(testcase2.title) }
+      it { should have_content(suite.testcases.count) }
+    end
   end
   
 

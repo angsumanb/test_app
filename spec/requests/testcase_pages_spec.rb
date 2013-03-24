@@ -93,12 +93,12 @@ describe "testcase profile page" do
    # let(:testcase) { FactoryGirl.create(:testcase) }
     before { visit testcase_path(testcase) }
 
-    it { should have_selector('h1',    text: suite.title) }
+    it { should have_selector('h1',    text: suite.name) }
     it { should have_link('back to suite', href: suite_path(suite)) }
-    it { should have_selector('h1',    text: testcase.title) }
-    it { should have_selector('h2',    text: testcase.steps) }
-    it { should have_selector('h2',    text: testcase.type) }
-    it { should have_selector('h2',    text: testcase.priority) }
+    it { should have_selector('h3',    text: testcase.title) }
+    it { should have_selector('h6',    text: testcase.steps) }
+    it { should have_selector('h4',    text: testcase.testtype) }
+    it { should have_selector('h4',    text: testcase.priority) }
    #It should have_text of description, value of type, priority 
    # or may be above test cases are testing this only
     it { should have_selector('title', text: testcase.title) }
@@ -127,6 +127,8 @@ describe "create new testcase" do
       before do
         fill_in "Title",         with: "Example testcase"
         fill_in "Steps",        with: "Example testcase steps"
+        fill_in "Priority",        with: "Example testcase priority"
+        fill_in "Testtype",        with: "Example testcase type"
       end
 
       it "should create a testcase" do
@@ -159,11 +161,12 @@ describe "create new testcase" do
         click_button "Save changes"
       end
 
-      it { should have_selector('title', text: new_title.upcase) }
-      it { should have_selector('h1', text: new_title.upcase) }
+      #it { should have_selector('title', text: new_title.upcase) }
+      it { should have_selector('title', text: new_title) }
+      it { should have_selector('h3', text: new_title) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Sign out', href: signout_path) }
-      specify { testcase.reload.title.should  == new_title.upcase }
+      specify { testcase.reload.title.should  == new_title }
       specify { testcase.reload.steps.should == new_steps }
     end
   end

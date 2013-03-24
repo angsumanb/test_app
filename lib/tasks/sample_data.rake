@@ -52,10 +52,10 @@ namespace :db do
       title = "Testcase-#{n+1}"
       _m = 1
       steps = Faker::Lorem.sentence(5)
-      type = "ttype-#{_m}"
+      testtype = "testtype-#{_m}"
       priority = "Priority-#{_m}"
           for suite in suites do
-            suite.testcases.create!(steps: steps, title: title+"-"+"#{_m}", type: type, priority: priority)
+            suite.testcases.create!(steps: steps, title: title+"-"+"#{_m}", testtype: testtype, priority: priority)
             _m = _m+1
           end
     end

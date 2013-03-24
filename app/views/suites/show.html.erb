@@ -2,10 +2,6 @@
 <div class="row">
   <aside class="span4">
     <section>
-     <h1>Pod - 
-      <%= @suite.pod.name %></h1>
-      <p> <%= link_to "back to pod", pod_path(@suite.pod) %></p>
-      <p> <%= link_to "back to project", pod_path(@suite.pod.project) %></p>
 
       <h1>Suite - 
       <%= @suite.name %></h1>
@@ -14,6 +10,33 @@
     </section>
   </aside>
 
+  <div class="span6">
+    <% if @suite.testcases.any? %>
+      <h3>Testcases (<%= @suite.testcases.count %>)</h3>
+      <ol class="microposts">
+          <%= render @testcases %>
+      </ol>
+        <%= will_paginate @testcases %>
+    <% end %>
+  </div>
+
+<!--  <div class="span6">
+    <% if @suite.testcases.any? %>
+      <h3>Testcases (<%= @suite.testcases.count %>)</h3>
+      <ol class="microposts">
+          <%= render @testcases %>
+      </ol>
+        <%= will_paginate @testcases %>
+    <% end %>
+  </div> -->
+  
+<div class="span2">
+       <p> <%= link_to "Edit suite details", edit_suite_path(params[:id]) %></p>
+     <h4>Pod - 
+      <%= @suite.pod.name %></h4>
+      <p> <%= link_to "back to pod", pod_path(@suite.pod) %></p>
+<!--  <p> <%= link_to "back to project", pod_path(@suite.pod.project) %></p>-->
+  </div> 
 </div>
 
 <!-- PENDING

@@ -1,5 +1,7 @@
 require 'spec_helper'
 #require 'ruby-debug'
+require 'database_cleaner'
+DatabaseCleaner.strategy = :truncation
 
 describe "Project pages" do
 
@@ -159,5 +161,5 @@ describe "Project pages" do
       specify { project.reload.description.should == new_description }
     end
   end
-
+  DatabaseCleaner.clean
 end

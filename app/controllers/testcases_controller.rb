@@ -23,7 +23,7 @@ class TestcasesController < ApplicationController
   def create
     @suite = Suite.find_by_id(params[:testcase][:suite_id])
 #    @testcase = @suite.testcases.build(params[:testcase])
-    @testcase = @suite.testcases.build(title: params[:testcase][:title], steps: params[:testcase][:steps], type: params[:testcase][:type], priority: params[:testcase][:priority])
+    @testcase = @suite.testcases.build(title: params[:testcase][:title], steps: params[:testcase][:steps], testtype: params[:testcase][:testtype], priority: params[:testcase][:priority])
     if @testcase.save
       flash[:success] = "Congratulaions! You have created a new testcase."
       redirect_to @testcase 

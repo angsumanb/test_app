@@ -38,8 +38,10 @@ FactoryGirl.define do
   end
 
   factory :testcase do
-    sequence(:name) { |n| "Testcase #{n}" }
-    sequence(:description) { |n| "testcase_#{n}_description"}
+    sequence(:title) { |n| "Testcase #{n}" }
+    sequence(:testtype) { |n| "Testcase #{n}" }
+    sequence(:priority) { |n| "Testcase #{n}" }
+    sequence(:steps) { |n| "testcase_#{n}_steps"}
     suite 
   end
 end

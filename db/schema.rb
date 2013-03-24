@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130322185410) do
+ActiveRecord::Schema.define(:version => 20130322235437) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130322185410) do
 
   create_table "testcases", :force => true do |t|
     t.string   "title"
-    t.string   "type"
+    t.string   "testtype"
     t.string   "priority"
     t.text     "preconditions"
     t.string   "estimate"
