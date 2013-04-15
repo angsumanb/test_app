@@ -12,11 +12,14 @@
       <%= f.text_field :title, placeholder: "Title" %>
 
       <%= f.label :testtype %>
-      <%= f.select :testtype, collection: Testcase::TTOPTIONS %>
+      <%= f.select :testtype,  Testcase::TTOPTIONS %>
 
       <%= f.label :priority %>
-      <%= f.select :priority, collection: Testcase::PROPTIONS %>
+      <%= f.select :priority,  Testcase::PROPTIONS %>
       
+      <%= f.label :estimate %>
+      <%= f.text_field :estimate, placeholder: "Estimate" %>
+
       <%= f.label :steps %>
       <%= f.text_area :steps, size: "60*60", class: "input-xxlarge", placeholder: "Steps..." %>
       

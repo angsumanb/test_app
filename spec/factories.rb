@@ -39,9 +39,14 @@ FactoryGirl.define do
 
   factory :testcase do
     sequence(:title) { |n| "Testcase #{n}" }
-    sequence(:testtype) { |n| "Testcase #{n}" }
-    sequence(:priority) { |n| "Testcase #{n}" }
+    sequence(:testtype) { |n| "Regression" }
+    sequence(:priority) { |n| "High" }
     sequence(:steps) { |n| "testcase_#{n}_steps"}
     suite 
+  end
+
+  factory :testrun do
+    sequence(:name)  { |n| "Testrun #{n}" }
+    sequence(:description) { |n| "Testrun_#{n}_description"}
   end
 end

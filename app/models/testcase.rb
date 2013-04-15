@@ -2,6 +2,12 @@ class Testcase < ActiveRecord::Base
   attr_accessible :comments, :estimate, :expectedresult, :preconditions, :priority, :steps, :title, :testtype
 
   belongs_to :suite
+  has_many :testresults
+  has_many :testruns, :through => :testresults
+  
+#  accepts_nested_attributes_for :testresults
+
+
   TTOPTIONS = ['Functionality', 'Regression', 'Performance', 'Usability', 'Other']
   PROPTIONS = ['High', 'Medium', 'Low', 'Unknown']
 

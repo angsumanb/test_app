@@ -1,5 +1,11 @@
 TestApp::Application.routes.draw do
 
+  get "testresults/new"
+  get "testresults/makePass"
+  post "testresults/makePass"
+
+#  get "testruns/new"
+
   get "testcases/new"
 
   get "suites/new"
@@ -11,6 +17,7 @@ TestApp::Application.routes.draw do
   resources :pods
   resources :suites
   resources :testcases
+  resources :testruns
 
   root to: 'static_pages#home' 
 

@@ -1,0 +1,22 @@
+<% provide(:title,"Testrun #{@testrun.name}") %>
+<div class="row">
+  <aside class="span3">
+    <section>
+      <h1>Testrun - 
+      <%= @testrun.name %></h1>
+       <p> <%= link_to "Edit testrun details", edit_testrun_path(params[:id]) %></p>
+       <p> <%= link_to "Add testcases", '#' %></p>
+    </section>
+  </aside>
+
+  <div class="span7">
+      <%= render "testresult"  %>
+  </div>
+  <div class="span2">
+  </div>
+</div>
+
+<!-- PENDING
+Add a picture for a testrun.
+See Gravatar for a user in app/views/users/show.html.erb
+-->

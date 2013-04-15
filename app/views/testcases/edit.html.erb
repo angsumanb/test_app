@@ -9,11 +9,15 @@
       <%= f.label :title %>
       <%= f.text_field :title %>
 
+
       <%= f.label :testtype %>
-      <%= f.text_field :testtype %>
+      <%= f.select :testtype,  Testcase::TTOPTIONS %>
 
       <%= f.label :priority %>
-      <%= f.text_field :priority %>
+      <%= f.select :priority,  Testcase::PROPTIONS %>
+
+      <%= f.label :estimate %>
+      <%= f.text_field :estimate %>
 
       <%= f.label :steps %>
       <%= f.text_area :steps, size: "40*20" %>

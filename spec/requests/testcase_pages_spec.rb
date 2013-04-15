@@ -95,10 +95,10 @@ describe "testcase profile page" do
 
     it { should have_selector('h1',    text: suite.name) }
     it { should have_link('back to suite', href: suite_path(suite)) }
-    it { should have_selector('h3',    text: testcase.title) }
-    it { should have_selector('h6',    text: testcase.steps) }
-    it { should have_selector('h4',    text: testcase.testtype) }
-    it { should have_selector('h4',    text: testcase.priority) }
+    it { should have_selector('h5',    text: testcase.title) }
+    it { should have_selector('h5',    text: testcase.steps) }
+    it { should have_selector('h5',    text: testcase.testtype) }
+    it { should have_selector('h5',    text: testcase.priority) }
    #It should have_text of description, value of type, priority 
    # or may be above test cases are testing this only
     it { should have_selector('title', text: testcase.title) }
@@ -127,8 +127,8 @@ describe "create new testcase" do
       before do
         fill_in "Title",         with: "Example testcase"
         fill_in "Steps",        with: "Example testcase steps"
-        fill_in "Priority",        with: "Example testcase priority"
-        fill_in "Testtype",        with: "Example testcase type"
+        select 'Medium',        from: "Priority"
+        select 'Regression',        from: "Testtype"
       end
 
       it "should create a testcase" do
@@ -163,7 +163,7 @@ describe "create new testcase" do
 
       #it { should have_selector('title', text: new_title.upcase) }
       it { should have_selector('title', text: new_title) }
-      it { should have_selector('h3', text: new_title) }
+      it { should have_selector('h5', text: new_title) }
       it { should have_selector('div.alert.alert-success') }
       it { should have_link('Sign out', href: signout_path) }
       specify { testcase.reload.title.should  == new_title }

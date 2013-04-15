@@ -93,8 +93,8 @@ describe "suite profile page" do
     let(:pod) { FactoryGirl.create(:pod) }
     let(:suite) { FactoryGirl.create(:suite, pod: pod) }
 
-    let!(:testcase1) { FactoryGirl.create(:testcase, suite: suite, title: "testcase1", steps: "testcase steps", priority: "p1", testtype: "automated") }
-    let!(:testcase2) { FactoryGirl.create(:testcase, suite: suite, title: "testcase2", steps: "testcase steps", priority: "p2", testtype: "regression") }
+    let!(:testcase1) { FactoryGirl.create(:testcase, suite: suite, title: "testcase1", steps: "testcase steps", priority: "High", testtype: "Performance") }
+    let!(:testcase2) { FactoryGirl.create(:testcase, suite: suite, title: "testcase2", steps: "testcase steps", priority: "Low", testtype: "Regression") }
 
    # let(:suite) { FactoryGirl.create(:suite) }
     before do

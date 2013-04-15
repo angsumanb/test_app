@@ -1,0 +1,23 @@
+<% provide(:title, 'All testruns') %>
+<div class="row">
+  <aside class="span3">
+    <section>
+
+       <p> <%= link_to "Create new Testrun", new_testrun_path %></p>
+    </section>
+  </aside>
+
+  <div class="span7">
+    <h1>All testruns</h1>
+
+    <%= will_paginate %>
+
+<ul class="users">
+  <%= render @testruns  %>
+</ul>
+
+<%= will_paginate %>
+
+  </div>
+</div>
+
