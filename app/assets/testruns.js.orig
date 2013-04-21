@@ -1,0 +1,28 @@
+ $(document).ready( function() {
+    $("#table1").on('click', '#button1', function() {
+    $(this).removeClass('btn-danger');
+    $(this).addClass('btn-primary');
+  });
+ 
+    if($('#table1').find('#button1').val() == "Passed" ) {
+    $(this).addClass('btn-danger');
+    }
+    if($('button').val() == "Hello" ) {
+    alert("hello");
+    $(this).addClass('btn-primary');
+    $(this).text('ifif');
+    }
+    else {
+    $('button').addClass('btn-danger');
+    $('button').text('else');
+    }
+    if($('button').val() == "Hello" ) {
+    $(this).addClass('btn-danger');
+    }
+
+    $('#table1').find('#button1').addClass('btn-danger');
+        
+
+});
+
+  

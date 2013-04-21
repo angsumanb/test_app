@@ -1,8 +1,69 @@
- $(document).ready( function() {
-   $("#table1").on('click', '#button2', function() {
-    $(this).toggleClass('btn-primary');
-    $(this).html('Passed');
-  });
-});
+$(document).ready( function() {
+     if($('#vicky').text() == 'Hello') {
+        $('#vicky').text("ifif");
+     } 
 
-  
+  $("#table1").on('click', '.status', function() {
+    $(this).removeClass('btn-warning');
+    $(this).addClass('btn-success');
+    $(this).prop('value', 'Passed');
+  });
+
+// ---------Change the button class when changing status on click event//  
+$(".statusgroup").on('click', '.passed', function() {
+    $(this).addClass('btn-success');
+    $(this).closest('.statusgroup').find('.pending').removeClass('btn-warning');
+    $(this).closest('.statusgroup').find('.failed').removeClass('btn-error');
+    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-danger');
+  });
+ 
+$(".statusgroup").on('click', '.pending', function() {
+    $(this).addClass('btn-warning');
+    $(this).closest('.statusgroup').find('.passed').removeClass('btn-success');
+    $(this).closest('.statusgroup').find('.failed').removeClass('btn-danger');
+    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-danger');
+  });
+
+$(".statusgroup").on('click', '.failed', function() {
+    $(this).addClass('btn-danger');
+    $(this).closest('.statusgroup').find('.passed').removeClass('btn-success');
+    $(this).closest('.statusgroup').find('.pending').removeClass('btn-warning');
+    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-danger');
+  });
+
+
+$(".statusgroup").on('click', '.blocked', function() {
+    $(this).addClass('btn-danger');
+    $(this).closest('.statusgroup').find('.passed').removeClass('btn-success');
+    $(this).closest('.statusgroup').find('.pending').removeClass('btn-warning');
+    $(this).closest('.statusgroup').find('.failed').removeClass('btn-danger');
+  });
+//-----------------------------------------------------------
+  $('button').each(function () {
+    if ($(this).text() == 'Hello') {
+        $(this).text('working');
+    } 
+});
+  $('.status').each(function () {
+    if ($(this).attr('value') == 'Passed') {
+        $(this).addClass('btn-success');
+      //works $('input').attr('value','working');
+   // if ($('#button1').attr('value') == 'Passed') {
+     //   $('#button1').attr('value','working');
+    } 
+    if ($(this).attr('value') == 'Pending') {
+        $(this).addClass('btn-warning');
+    } 
+});
+  $('.statusgroup').each(function () {
+    if ($(this).find('.passed').html() == 'Passed') {
+     //   $(this).find('.passed').addClass('btn-success');
+      //works $('input').attr('value','working');
+   // if ($('#button1').attr('value') == 'Passed') {
+     //   $('#button1').attr('value','working');
+    } 
+    if ($(this).find('.pending').html() == 'Pending') {
+    //    $(this).find('.pending').addClass('btn-warning');
+    } 
+});
+});

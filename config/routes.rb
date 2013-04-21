@@ -1,8 +1,11 @@
 TestApp::Application.routes.draw do
 
   get "testresults/new"
-  get "testresults/makePass"
-  post "testresults/makePass"
+  get "testresults/makePassed"
+  get "testresults/makePending"
+  get "testresults/makeFailed"
+  get "testresults/makeBlocked"
+  post "testresults/makePassed"
 
 #  get "testruns/new"
 
