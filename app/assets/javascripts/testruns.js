@@ -66,4 +66,27 @@ $(".statusgroup").on('click', '.blocked', function() {
     //    $(this).find('.pending').addClass('btn-warning');
     } 
 });
+
+  $('.selectAll').on('click', function selectAll(){
+//    event.preventDefault();
+        $("input:checkbox").each(function(event){
+          $(this).attr('checked', true);
+        });
+        return false; //works even w/o returning false - no jump back to top
+      });
+  $('.unselectAll').on('click', function selectAll(){
+    //event.preventDefault();
+        $("input:checkbox").each(function(event){
+          $(this).attr('checked', false);
+        });
+        return false;
+      });
+
+  $('.selectAllFromPod').on('click', function (event) {
+    //event.preventDefault();
+    $(this).closest('.pod').find("input:checkbox").each(function() {
+          $(this).attr('checked', true);
+        });
+        return false;
+      });
 });

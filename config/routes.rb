@@ -12,6 +12,7 @@ TestApp::Application.routes.draw do
   get "testcases/new"
 
   get "suites/new"
+  get "testruns/newone"
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

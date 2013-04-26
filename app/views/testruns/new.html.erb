@@ -1,4 +1,5 @@
 <% provide(:title, 'Create new testrun') %>
+
 <h1>Create new testrun</h1>
 
 <div class="row">
@@ -19,14 +20,27 @@
 
   <div class="span6">
      <h3>Testrun Testcases</h3>
-       <% Testcase.all.each do |testcase| %>
-         <div>
-            <%= testcase.title %>
-             <%= check_box_tag :testcase_ids, testcase.id, @testrun.testcases.include?(testcase), :name => 'testrun[testcase_ids[]' %>
+	<a href="#" class="selectAll">Select All</a> 
+	<a href="#" class="unselectAll">Unselect All</a> 
+          <% Pod.all.each do |pod| %> 
+            <h3>    <%= pod.name %> </h3>
+            <div class="pod">    <a href="#" class="selectAllFromPod">Select All from this pod</a> 
+            <% pod.suites.all.each do |suite| %>
+           <ul> <h4>    <%= suite.name %> </h4>
+
+        	 <div>
+      		  <% suite.testcases.all.each do |testcase| %>
+          	 <li>     <%= testcase.title %>
+           	      <%= check_box_tag :testcase_ids, testcase.id, @testrun.testcases.include?(testcase), :name => 'testrun[testcase_ids[]' %> </br> </li>
+     		  <% end %>
+        	 </div> </ul>
+            <% end %>
          </div>
         <% end %>
-</br>
+	<a href="#" class="selectAll">Select All</a> 
+	<a href="#" class="unselectAll">Unselect All</a> 
   </div>
+</br>
   <div class="span3">
       <%= f.submit "Create new testrun", class: "btn btn-primary" %>
     <% end %>
