@@ -1,11 +1,12 @@
 TestApp::Application.routes.draw do
 
   get "testresults/new"
-  get "testresults/makePassed"
-  get "testresults/makePending"
-  get "testresults/makeFailed"
-  get "testresults/makeBlocked"
-  post "testresults/makePassed"
+  get "testresults/changeStatus"
+#  get "testresults/makePassed" 
+#  get "testresults/makePending"
+#  get "testresults/makeFailed"
+#  get "testresults/makeBlocked"
+#  post "testresults/makePassed"
 
 #  get "testruns/new"
 
@@ -34,6 +35,7 @@ TestApp::Application.routes.draw do
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact' 
+  match '/dashboard', to: 'static_pages#dashboard' 
 
 
 

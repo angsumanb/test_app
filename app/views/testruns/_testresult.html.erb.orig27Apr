@@ -1,0 +1,63 @@
+    <% if @testrun.testcases.any? %>
+      <h3>Total Testcases in this run (<%= @testrun.testcases.count %>)</h3>
+
+
+      <!-- Putting all the testcases for that run in one array, so that we do not have to hit the database everytime -->
+      <% testruntestcases = @testrun.testcases %>
+      <% testruntestresults = @testrun.testresults %>
+
+      <!-- Adding Accordian collapsible -->
+  <div class="accordion" id="accordion2">
+      <% Pod.all.each do |pod| %>
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%=pod.id%>">
+         <h3>    <%= pod.name %> </h3></a>
+      </div>
+
+      <div id="<%=pod.id%>" class="accordion-body collapse">
+      <div class="accordion-inner">
+           <% pod.suites.all.each do |suite| %>
+           <ul> <h4>    <%= suite.name %> </h4>
+             <table id="table1" class="table table-striped table-bordered table-hover table-condensed">
+               <tr>
+    	         <th>Run/TC/Result ID</th>
+      	         <th>Title</th>
+    	         <th>Type</th>
+       		 <th>Priority</th>
+       		 <th>Status</th>
+     	         <th>Change Status</th>
+    	       </tr>
+                  <% suite.testcases.all.each do |testcase| %>
+                    <% if(testruntestcases.include?(testcase)) %>
+                      <!-- PendingStuff - add an index for testcase_id in testresults table -->
+                      <%# testresult = @testrun.testresults.find(:all,  :conditions => ["testcase_id = ? ", testcase.id]).first %> 
+                      <!-- The next line is better than above because we are searching through an array rather than querying the database everytime -->
+                      <% testresult = testruntestresults.find(:all,  :conditions => ["testcase_id = ? ", testcase.id]).first %> 
+                      
+     	       <tr>
+        	 <td><%= @testrun.id %> /<%= testcase.id %> / <%= testresult.id  %></td>
+        	 <td><%= testcase.title %></td>
+      	         <td><%= testcase.testtype %></td>
+        	 <td><%= testcase.priority %></td>
+        	 <td><span id=testresult><%= testresult.status %></span></td>
+        	 <td> <div class="btn-group statusgroup">
+        	 <%= link_to "Passed",  { testcaseId: testcase.id, testrunId: @testrun, controller: "testresults", action: "makePassed" },   { remote: true, class: (testresult.status == 'Passed'? "btn btn-small passed btn-success" : "btn btn-small passed") }  %>
+        	 <%= link_to "Pending",  { testcaseId: testcase.id, testrunId: @testrun, controller: "testresults", action: "makePending" },  { remote: true, class:  (testresult.status == 'Pending'? "btn btn-small pending btn-warning" : "btn btn-small pending") } %>
+        	 <%= link_to "Failed",  { testcaseId: testcase.id, testrunId: @testrun, controller: "testresults", action: "makeFailed" },  { remote: true, class:  (testresult.status == 'Failed'? "btn btn-small failed btn-danger" : "btn btn-small failed") } %>
+        	 <%= link_to "Blocked",  { testcaseId: testcase.id, testrunId: @testrun, controller: "testresults", action: "makeBlocked" },  { remote: true, class:  (testresult.status == 'Blocked'? "btn btn-small blocked btn-inverse" : "btn btn-small blocked") } %>
+      
+      		</div> </td>
+      	      </tr>
+      		 <% end %>
+         	 <% end %>
+      </table>
+           </ul>
+                  <% end %>
+     </div>
+     </div>
+     </div>
+     <% end %>
+     </div>
+     <% end %>
+

@@ -5,7 +5,7 @@ class TestrunsController < ApplicationController
 
   def show
     @testrun = Testrun.find(params[:id])
-    @testcases = Testcase.find(:all)
+    @testcases = Testcase.find(:all) #do I need this #pendingStuff
 #    @pods = @testrun.pods.paginate(page: params[:page])
   end
 

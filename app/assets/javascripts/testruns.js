@@ -13,37 +13,32 @@ $(document).ready( function() {
 $(".statusgroup").on('click', '.passed', function() {
     $(this).addClass('btn-success');
     $(this).closest('.statusgroup').find('.pending').removeClass('btn-warning');
-    $(this).closest('.statusgroup').find('.failed').removeClass('btn-error');
-    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-danger');
+    $(this).closest('.statusgroup').find('.failed').removeClass('btn-danger');
+    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-inverse');
   });
  
 $(".statusgroup").on('click', '.pending', function() {
     $(this).addClass('btn-warning');
     $(this).closest('.statusgroup').find('.passed').removeClass('btn-success');
     $(this).closest('.statusgroup').find('.failed').removeClass('btn-danger');
-    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-danger');
+    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-inverse');
   });
 
 $(".statusgroup").on('click', '.failed', function() {
     $(this).addClass('btn-danger');
     $(this).closest('.statusgroup').find('.passed').removeClass('btn-success');
     $(this).closest('.statusgroup').find('.pending').removeClass('btn-warning');
-    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-danger');
+    $(this).closest('.statusgroup').find('.blocked').removeClass('btn-inverse');
   });
 
 
 $(".statusgroup").on('click', '.blocked', function() {
-    $(this).addClass('btn-danger');
+    $(this).addClass('btn-inverse');
     $(this).closest('.statusgroup').find('.passed').removeClass('btn-success');
     $(this).closest('.statusgroup').find('.pending').removeClass('btn-warning');
     $(this).closest('.statusgroup').find('.failed').removeClass('btn-danger');
   });
 //-----------------------------------------------------------
-  $('button').each(function () {
-    if ($(this).text() == 'Hello') {
-        $(this).text('working');
-    } 
-});
   $('.status').each(function () {
     if ($(this).attr('value') == 'Passed') {
         $(this).addClass('btn-success');

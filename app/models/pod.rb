@@ -3,6 +3,7 @@ class Pod < ActiveRecord::Base
 
   belongs_to :project
   has_many :suites, dependent: :destroy
+#  has_many :testcases through: :suites
 
   before_save { |pod| pod.name = name.upcase }
 
