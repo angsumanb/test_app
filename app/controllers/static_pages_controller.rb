@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+
+  respond_to :html, :json, :xml
   def home
   end
 
@@ -18,5 +20,8 @@ class StaticPagesController < ApplicationController
     @pending = @latestRun.testresults.find(:all, :conditions => ["status = ? ", "Pending"])
     @failed = @latestRun.testresults.find(:all, :conditions => ["status = ? ", "Failed"])
     @blocked = @latestRun.testresults.find(:all, :conditions => ["status = ? ", "Blocked"])
+    
+    respond_with(@pending)
+
   end
 end
