@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "testruns" %>
@@ -13,7 +14,28 @@
   <body>
 
     <%= render 'layouts/header' %>
-    <div class="container">
+    <div class="container-fluid">
+      <div class="row-fluid">
+      	<div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+        	
+          <li><a href="#global"><i class="icon-chevron-right"></i> Global styles</a></li>
+           <td><li><%= link_to  root_path do %>
+           	<i class="icon-home"></i> Home
+                		<%end%>
+           </li>
+          <li><%= link_to    dashboard_path do %>
+          	<i class="icon-home"></i> Dashboard
+                		<%end%>
+          </li>
+          <span><p>Current page</p></span>
+          <%= yield :sidebar %>
+          
+        </ul>
+      </div>
+       
+       <div class="span9">
+         <div class="body">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
@@ -22,6 +44,8 @@
       
     <%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
+         </div>
+       </div>
     </div>
   </body>
 </html>

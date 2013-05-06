@@ -1,13 +1,13 @@
 <% provide(:title, 'All testruns') %>
-<div class="row">
-  <aside class="span3">
-    <section>
 
-       <p> <%= link_to "Create new Testrun", new_testrun_path %></p>
-    </section>
-  </aside>
+<% content_for :sidebar do %>
+       <li> <%= link_to  new_testrun_path do %>
+       	  <i class="icon-home"></i> Create new Testrun
+       </li>
+    <% end %>
+     <% end %>
 
-  <div class="span7">
+  
     <h1>All testruns</h1>
 
     <%= will_paginate %>
@@ -17,7 +17,4 @@
 </ul>
 
 <%= will_paginate %>
-
-  </div>
-</div>
 

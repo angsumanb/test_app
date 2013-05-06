@@ -1,20 +1,22 @@
 <% provide(:title,"Testrun #{@testrun.name}") %>
-<div class="row">
-  <aside class="span3">
-    <section>
-      <h1>Testrun - 
-      <%= @testrun.name %></h1>
-       <p> <%= link_to "Edit testrun details", edit_testrun_path(params[:id]) %></p>
-       <p> <%= link_to "Add testcases", '#' %></p>
-    </section>
-  </aside>
 
-  <div class="span9">
-      <%= render "testresult"  %>
-  </div>
-  <div class="span2">
-  </div>
-</div>
+<% content_for :sidebar do %>
+<li>
+	<%= link_to  edit_testrun_path(params[:id]) do%>
+                	<i class="icon-home"></i> Edit testrun details
+                		<%end%>
+</li>
+<li>
+	<%= link_to  '#' do%>
+                	<i class="icon-home"></i> Add testcases
+                		<%end%>
+</li>
+
+<% end %>
+<h1>Testrun -
+<%= @testrun.name %></h1>
+
+<%= render "testresult"  %>
 
 <!-- PENDING
 Add a picture for a testrun.

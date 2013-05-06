@@ -1,26 +1,20 @@
 <% provide(:title, 'Dashboard') %>
+
+<% content_for :sidebar do %>
+<li>
+	
+	<%= link_to @latestRun.name,    @latestRun %>
+	
+</li>
+<% end %>
 <h1>Dashboard</h1>
 
-<div class="row-fluid">
-  <aside class="span3">
-    <section>
-All testruns listed here
-    </section>
-  </aside>
-
-  <div class="span8">
-     <h5>All testrun status here</h5>
-      <%= @latestRun.name %> </br>
-      <%= @latestRun.description %>
-      <h5> Total cases: <%= @totalcases %> </h5> 
-      <h6> Passed: <%= @passed.count %> </h6> 
-      <h6> Pending: <%= @pending.count %> </h6> 
-      <h6> Failed: <%= @failed.count %> </h6> 
-      <h6> Blocked: <%= @blocked.count %> </h6> 
-  </div>
-</br>
-  <div class="span1">
-    <button class="btn btn-primary">placeholder</button>
-  </div>
-</div>
+<h5>All testrun status here</h5>
+<%= @latestRun.name %> </br>
+<%= @latestRun.description %>
+<h5> Total cases: <%= @totalcases %> </h5>
+<h6> Passed: <%= @passed.count %> </h6>
+<h6> Pending: <%= @pending.count %> </h6>
+<h6> Failed: <%= @failed.count %> </h6>
+<h6> Blocked: <%= @blocked.count %> </h6>
 

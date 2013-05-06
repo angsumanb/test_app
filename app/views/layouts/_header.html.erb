@@ -1,15 +1,24 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
-    <div class="container">
+    <div class="container-fluid">
       <%= link_to "Django", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-          <li><%= link_to "Dashboard",    dashboard_path %></li>
+          <li><%= link_to     root_path do %>
+          	<i class="icon-home icon-white"></i> Home
+                		<%end%>
+          </li>
+          <li><%= link_to     dashboard_path  do%>
+          	<i class="icon-home icon-white"></i> Dashboard
+                		<%end%>
+          </li>
           <li><%= link_to "Help",    help_path %></li>
 	   <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
-            <li><%= link_to "Projects", projects_path %></li>
+            <li><%= link_to projects_path do %>
+            	<i class="icon-home icon-white"></i> Projects
+                		<%end%>
+            </li>
             <li><%= link_to "Pods", pods_path %></li>
             <li><%= link_to "Suites", suites_path %></li>
             <li><%= link_to "Testcases", testcases_path %></li>
@@ -19,11 +28,19 @@
                 Account <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to  current_user do %>
+                	<i class="icon-home"></i> Profile
+                		<%end%>
+                </li>
+                <li><%= link_to edit_user_path(current_user)  do%>
+                	<i class="icon-home"></i> Settings
+                		<%end%>
+                </li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to "Sign out", signout_path, method: "delete" %>
+                  <%= link_to signout_path, method: "delete" do %>
+                  <i class="icon-home"></i> Sign out
+                		<%end%>
                 </li>
               </ul>
             </li>

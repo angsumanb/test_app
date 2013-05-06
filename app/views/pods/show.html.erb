@@ -1,20 +1,24 @@
 <% provide(:title,"Pod #{@pod.name}") %>
-<div class="row">
-  <aside class="span4">
-    <section>
+
      <h1>Project - 
       <%= @pod.project.name %></h1>
-      <p> <%= link_to "back to project", project_path(@pod.project) %></p>
+     
+     <%content_for :sidebar do %> 
+     <li> 
+     	<%= link_to  project_path(@pod.project) do %>
+     	<i class="icon-home"></i> Back to project
+     	<% end %>
+     </li>
+     <li> <%= link_to "Edit pod details", edit_pod_path(params[:id]) %></li>
+       <li> <%= link_to "Create new Suite", new_suite_path(pod_id: @pod.id) %></li>
+       <% end %>
+     
 
       <h1>Pod - 
       <%= @pod.name %></h1>
-       <p> <%= link_to "Edit pod details", edit_pod_path(params[:id]) %></p>
-       <p> <%= link_to "Create new Suite", new_suite_path(pod_id: @pod.id) %></p>
+       
 
-    </section>
-  </aside>
-
-    <div class="span8">
+ 
     <% if @pod.suites.any? %>
       <h3>Suites (<%= @pod.suites.count %>)</h3>
         <%= will_paginate @suites, class: "pagination pagination-right" %>
@@ -23,8 +27,7 @@
       </ol>
         <%= will_paginate @suites, class: "pagination pagination-right" %>
     <% end %>
-  </div>
-</div>
+
 <!-- PENDING
 Add a picture for a pod.
 See Gravatar for a user in app/views/users/show.html.erb

@@ -234,3 +234,160 @@ aside {
     margin-bottom: 5px;
   }
 }
+
+/* actual sidebar */
+
+.page-sidebar {
+   position: fixed;
+  
+  
+  
+  min-height: 100% !important;
+  height: auto;
+  background-color: #EBEBEB;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  }
+.page-sidebar a {
+  font-family: 'Segoe UI', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  letter-spacing: 0.01em;
+  line-height: 13pt;
+  font-smooth: always;
+  color: #000000;
+  display: block;
+  width: 100%;
+  padding: 5px 20px 5px 10px;
+  white-space: nowrap;
+  font-size: 14px;
+  cursor: pointer;
+}
+.page-sidebar a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+.page-sidebar a:active {
+  color: rgba(0, 0, 0, 0.4);
+}
+.page-sidebar a:hover {
+  background-color: #2d89ef !important;
+  color: #ffffff !important;
+}
+.page-sidebar li {
+  display: list-item;
+  line-height: 20px;
+  position: relative;
+}
+.page-sidebar > ul > li > a {
+  font-size: 1.1em;
+}
+.page-sidebar > ul > li a.lead,
+.page-sidebar > ul > li.lead a,
+.page-sidebar > ul > li.lead {
+  font-weight: bold;
+}
+.page-sidebar > ul > li.sticker:before {
+  content: ".";
+  position: absolute;
+  width: 7px;
+  height: 28px;
+  left: -7px;
+  text-indent: -9999px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #ebebeb;
+}
+.page-sidebar > ul > li.sticker.sticker-color-blue:before {
+  background-color: #2d89ef;
+}
+.page-sidebar > ul > li.sticker.sticker-color-blueLight:before {
+  background-color: #eff4ff;
+}
+.page-sidebar > ul > li.sticker.sticker-color-blueDark:before {
+  background-color: #2b5797;
+}
+.page-sidebar > ul > li.sticker.sticker-color-green:before {
+  background-color: #00a300 !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-greenLight:before {
+  background-color: #99b433 !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-greenDark:before {
+  background-color: #1e7145 !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-red:before {
+  background-color: #b91d47 !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-yellow:before {
+  background-color: #ffc40d !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-orange:before {
+  background-color: #e3a21a !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-orangeDark:before {
+  background-color: #da532c !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-pink:before {
+  background-color: #9f00a7 !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-pinkDark:before {
+  background-color: #7e3878 !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-purple:before {
+  background-color: #603cba !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-darken:before {
+  background-color: #1d1d1d !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-white:before {
+  background-color: #ffffff !important;
+}
+.page-sidebar > ul > li.sticker.sticker-color-grayDark:before {
+  background-color: #525252 !important;
+}
+.page-sidebar .divider {
+  height: 1px;
+  margin: 9px 1px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.page-sidebar ul {
+  margin-left: 0;
+  list-style: none;
+  background-color: #EBEBEB;
+}
+.page-sidebar ul.sub-menu {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.page-sidebar ul.sub-menu a {
+  padding: 5px 20px 5px 25px;
+}
+.page-sidebar ul.sub-menu.light {
+  background-color: #f9f9f9 !important;
+}
+.page-sidebar .sidebar-dropdown-menu {
+  display: none;
+}
+.page-sidebar .sidebar-dropdown-menu.open {
+  display: block;
+}
+.page-sidebar > ul > li.dropdown {
+  position: relative;
+}
+.page-sidebar > ul > li.dropdown:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 6px;
+  left: 100%;
+  margin-left: -20px;
+  width: 16px;
+  height: 16px;
+  background: no-repeat;
+  background-position: 0 -1586px;
+  z-index: 200;
+}
+.page-sidebar > ul > li.dropdown.active:after {
+  background-position: 0 -676px;
+}
