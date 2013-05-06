@@ -1,44 +1,42 @@
 <% provide(:title,"Testcase #{@testcase.title}") %>
+
+<h1> <%= @testcase.suite.name %></h1>
+
+<% content_for :sidebar do %>
+<li>
+	<%= link_to  suite_path(@testcase.suite) do %> <i class="icon-arrow-left"></i> Back to suite
+	<% end %>
+</li>
+<li>
+	<%= link_to edit_testcase_path(params[:id]) do %> <i class="icon-wrench"></i> Edit testcase details
+	<% end %>
+</li>
+
+<% end %>
 <div class="row-fluid">
-  <div class="span12">
-    <div class="row-fluid">
-      <aside class="span2">
-        <section>
-          <h1>
-          <%= @testcase.suite.name %></h1>
-        </section>
-      </aside>
- 
-        <div class="span8">
-          <h4>Title : 
-          <%= @testcase.title %></h4>
-          <div class="row-fluid"> 
-            <div class="span4">
-              <h5>Testtype: <%= @testcase.testtype %></h5>
-            </div>
-            <div class="span4">
-              <h5>Priority: <%= @testcase.priority %></h5>
-            </div>
-            <div class="span4">
-              <h5>Estimate: <%= @testcase.estimate %></h5>
-            </div>
-          </div>
-          <div class="row-fluid"> 
-            <div class="span12">
-              <h5>Steps:</h5>
-              <p class="lead"> <%= @testcase.steps %></p>
-            </div>
-          </div>
-        </div>
-
-    <div class="span2">
-
-        <%= link_to "Edit testcase details", edit_testcase_path(params[:id])  %>
-        <%= link_to "back to suite", suite_path(@testcase.suite) %>
-        <%= link_to "back to pod", pod_path(@suite.pod) %>
-    </div>
- </div>
-</div>
+	<div class="span8">
+		<h4>Title :
+		<%= @testcase.title %></h4>
+		<div class="row-fluid">
+			<div class="span4">
+				<h5>Testtype: <%= @testcase.testtype %></h5>
+			</div>
+			<div class="span4">
+				<h5>Priority: <%= @testcase.priority %></h5>
+			</div>
+			<div class="span4">
+				<h5>Estimate: <%= @testcase.estimate %></h5>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<h5>Steps:</h5>
+				<p class="lead">
+					<%= @testcase.steps %>
+				</p>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- PENDING

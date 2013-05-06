@@ -1,15 +1,13 @@
 <% provide(:title,"Project #{@project.name}") %>
-<div class="row">
-  <aside class="span4">
-    <section>
+
       <h1>Project - 
       <%= @project.name %></h1>
-       <p> <%= link_to "Edit project details", edit_project_path(params[:id]) %></p>
-       <p> <%= link_to "Create new Pod", new_pod_path(project_id: @project.id) %></p>
-    </section>
-  </aside>
+      <% content_for :sidebar do %>
+       <li> <%= link_to "Edit project details", edit_project_path(params[:id]) %></li>
+       <li> <%= link_to "Create new Pod", new_pod_path(project_id: @project.id) %></li>
+  <% end %>
 
-  <div class="span8">
+
     <% if @project.pods.any? %>
       <h3>Pods (<%= @project.pods.count %>)</h3>
       <%= will_paginate @pods, class: "pagination pagination-right" %>
@@ -18,8 +16,6 @@
       </ol>
       <%= will_paginate @pods, class: "pagination pagination-right" %>
     <% end %>
-  </div>
-</div>
 
 <!-- PENDING
 Add a picture for a project.

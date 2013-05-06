@@ -1,52 +1,49 @@
 <% provide(:title,"Suite #{@suite.name}") %>
-<div class="row">
-  <aside class="span3">
-    <section>
 
-      <h1>Suite - 
-      <%= @suite.name %></h1>
-       <p> <%= link_to "Edit suite details", edit_suite_path(params[:id]) %></p>
-       <p> <%= link_to "Create new Testcase", new_testcase_path(suite_id: @suite.id) %></p>
-    </section>
-  </aside>
+<h1>Suite -
+<%= @suite.name %></h1>
+<% content_for :sidebar do %>
+<li>
+	<%= link_to  pod_path(@suite.pod) do %> <i class="icon-arrow-left"></i> Back to pod
+	<% end %>
+</li>
+<li>
+	<%= link_to edit_suite_path(params[:id]) do %> <i class="icon-wrench"></i> Edit suite details
+	<% end %>
+</li>
+<li>
+	<%= link_to  new_testcase_path(suite_id: @suite.id) do %> <i class="icon-plus-sign"></i> Create new Testcase
+	<% end %>
+</li>
 
-  <div class="span7">
-    <% if @suite.testcases.any? %>
-      <h3>Testcases (<%= @suite.testcases.count %>)</h3>
-        <%= will_paginate @testcases, class: "pagination pagination-right" %>
-      <table class="table table-striped table-bordered table-hover table-condensed">
-      <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Type</th>
-        <th>Priority</th>
-         <% if current_user.admin?  %>
-       <th> delete?</th> <% end %> 
-      </tr>
-             <%= render @testcases %> 
-      </table>
-        <%= will_paginate @testcases, class: "pagination pagination-right" %>
-    <% end %>
-  </div>
+<% end %>
+
+<% if @suite.testcases.any? %>
+<h3>Testcases (<%= @suite.testcases.count %>)</h3>
+<%= will_paginate @testcases, class: "pagination pagination-right" %>
+<table class="table table-striped table-bordered table-hover table-condensed">
+	<tr>
+		<th>Id</th>
+		<th>Title</th>
+		<th>Type</th>
+		<th>Priority</th>
+		<% if current_user.admin?  %>
+		<th> delete?</th> <% end %>
+	</tr>
+	<%= render @testcases %>
+</table>
+<%= will_paginate @testcases, class: "pagination pagination-right" %>
+<% end %>
 
 <!--  <div class="span6">
-    <% if @suite.testcases.any? %>
-      <h3>Testcases (<%= @suite.testcases.count %>)</h3>
-      <ol class="microposts">
-          <%= render @testcases %>
-      </ol>
-        <%= will_paginate @testcases %>
-    <% end %>
-  </div> -->
-  
-<div class="span2">
-       <p> <%= link_to "Edit suite details", edit_suite_path(params[:id]) %></p>
-     <h4>Pod - 
-      <%= @suite.pod.name %></h4>
-      <p> <%= link_to "back to pod", pod_path(@suite.pod) %></p>
-<!--  <p> <%= link_to "back to project", pod_path(@suite.pod.project) %></p>-->
-  </div> 
-</div>
+<% if @suite.testcases.any? %>
+<h3>Testcases (<%= @suite.testcases.count %>)</h3>
+<ol class="microposts">
+<%= render @testcases %>
+</ol>
+<%= will_paginate @testcases %>
+<% end %>
+</div> -->
 
 <!-- PENDING
 Add a picture for a suite.

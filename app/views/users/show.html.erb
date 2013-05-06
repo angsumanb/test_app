@@ -1,4 +1,11 @@
 <% provide(:title, @user.name) %>
+
+<% content_for :sidebar do %>
+<li>
+	<%= link_to edit_user_path(params[:id]) do %> <i class="icon-wrench"></i> Edit user details
+	<% end %>
+</li>
+<% end %>
 <div class="row">
   <aside class="span4">
     <section>
