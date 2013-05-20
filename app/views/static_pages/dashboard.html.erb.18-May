@@ -1,0 +1,34 @@
+<% provide(:title, 'Dashboard') %>
+
+<% content_for :sidebar do %>
+<li>
+	<%= link_to @latestRun.name,    @latestRun %>
+</li>
+<% end %>
+
+
+<h1>Dashboard</h1>
+<section id="tabs">
+<ul class="nav nav-tabs">
+  <li>
+    <a href="#E17" data-testrun="E17">E17</a>
+  </li>
+  <li><a href="#E16" data-testrun="E16">E16</a></li>
+  <li><a href="#E15" data-testrun="E15">E15</a></li>
+</ul>
+<div id="E17">
+<%= @latestRun.name %> </br>
+<%= @latestRun.description %>
+<h5> Total cases: <%= @totalcases %> </h5>
+<h6> Passed: <%= @passed.count %> </h6>
+<h6> Pending: <%= @pending.count %> </h6>
+<h6> Failed: <%= @failed.count %> </h6>
+<h6> Blocked: <%= @blocked.count %> </h6>
+</div>
+<div id="E16">
+<p>I am E16 div</p>
+</div>
+<div id="E15">
+<p>I am E15 div</p>
+</div>
+</section>

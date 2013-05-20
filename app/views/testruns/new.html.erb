@@ -2,9 +2,8 @@
 
 <h1>Create new testrun</h1>
 
-<div class="row">
-  <aside class="span3">
-    <section>
+<div class="row-fluid">
+  <div class="span3">
      
       <%= form_for(@testrun) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
@@ -15,10 +14,9 @@
       <%= f.label :description %>
       <%= f.text_area :description, size: "40*20" %>  
    
-    </section>
-  </aside>
+  </div>
 
-  <div class="span8">
+  <div class="span6">
      <h3>Testrun Testcases</h3>
 	<a href="#" class="selectAll">Select All</a> 
 	<a href="#" class="unselectAll">Unselect All</a> 
@@ -41,7 +39,7 @@
 	<a href="#" class="unselectAll">Unselect All</a> 
   </div>
 </br>
-  <div class="span1">
+  <div class="span3">
       <%= f.submit "Create new testrun", class: "btn btn-primary" %>
     <% end %>
   </div>
