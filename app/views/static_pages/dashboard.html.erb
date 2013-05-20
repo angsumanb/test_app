@@ -1,17 +1,53 @@
-<script type="text/javascript" >
-$(document).ready(function() {
-  $.("#highchart"),highcharts( {
-    chart: {
-      plotBckgroundColor: null,
-      plotBorderWidth: 1px, 
-      plotShadow: false
-      },
-    title: {
-      text: 'Testrun results'
-      }
-  }
-});
+<script >
+$(function () {
 
+    Highcharts.setOptions({
+     colors: ['#50B432', '#FF9900', '#480000', '#B00000', '#64E572', '#FF9655', '#FFF263',      '#6AF9C4']
+    }); 
+    $('#piechartcontainer').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: '<%= @latestRun.name %> testresults summary'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+            	percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.point.y ;
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Share',
+                data: [
+                    ['Passed',   <%= @passed.count %>],
+                    ['Pending',    <%= @pending.count %>],
+                    ['Blocked',     <%= @blocked.count %>],
+                    {
+                        name: 'Failed',
+                        y: <%= @failed.count %>,
+                        sliced: true,
+                        selected: true
+                    },
+                ]
+            }]
+        });
+    });
 </script>
 
 <% provide(:title, 'Dashboard') %>
@@ -47,9 +83,7 @@ $(document).ready(function() {
 <body>
 <h4> <%= @latestRun.name %> </h4>
       <div class="row-fluid">
-<div class="span8" id="highchart">
-Charts here
-</div>
+<div class="span8" id="piechartcontainer" style="height:350px;"></div>
 <div class="span4">
   <table class="table table-striped  table-hover" >
 
