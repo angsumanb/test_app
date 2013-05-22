@@ -11,7 +11,7 @@ $(function () {
                 plotShadow: false
             },
             title: {
-                text: '<%= @latestRun.name %> testresults summary'
+                text: '<% if(@runs.size > 0) %> <%=  @latestRun.name %> <% end %> testresults summary'
             },
             tooltip: {
         	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
@@ -35,12 +35,12 @@ $(function () {
                 type: 'pie',
                 name: 'Share',
                 data: [
-                    ['Passed',   <%= @passed.count %>],
-                    ['Pending',    <%= @pending.count %>],
-                    ['Blocked',     <%= @blocked.count %>],
+                    ['Passed',  <% if(@runs.size > 0) %>  <%= @passed.count %> <%end%>],
+                    ['Pending', <% if(@runs.size > 0) %>   <%= @pending.count %> <%end%>],
+                    ['Blocked', <% if(@runs.size > 0) %>   <%= @blocked.count %> <%end%>],
                     {
                         name: 'Failed',
-                        y: <%= @failed.count %>,
+                        y: <% if(@runs.size > 0) %> <%= @failed.count %> <%end%>,
                         sliced: true,
                         selected: true
                     },
@@ -49,7 +49,7 @@ $(function () {
         });
     });
 </script>
-
+ 
 <% provide(:title, 'Dashboard') %>
 
 <% content_for :sidebar do %>
