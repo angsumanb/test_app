@@ -2,9 +2,10 @@ class Testcase < ActiveRecord::Base
   attr_accessible :comments, :estimate, :expectedresult, :preconditions, :priority, :steps, :title, :testtype
 
   belongs_to :suite
-  has_many :testresults
+  has_many :testresults, dependent: :destroy
   has_many :testruns, :through => :testresults
-  
+
+   before_save { |testcase| testcase.title = title.capitalize }  
 #  accepts_nested_attributes_for :testresults
 
 

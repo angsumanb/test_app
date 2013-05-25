@@ -4,7 +4,7 @@ class Suite < ActiveRecord::Base
   belongs_to :pod
   has_many :testcases, dependent: :destroy
 
-  before_save { |suite| suite.name = name.upcase }
+  before_save { |suite| suite.name = name.capitalize }
 
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   validates :description, presence: true

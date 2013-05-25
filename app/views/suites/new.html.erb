@@ -1,4 +1,11 @@
 <% provide(:title, 'Create new suite') %>
+<ul class="breadcrumb">
+                   <li> <%=link_to @pod.project.name, @pod.project %>  <span class="divider">/</span></li>
+                   <li> <%=link_to @pod.name, @pod %>  <span class="divider">/</span></li>
+                   <li class="active"> New suite </li>
+                </ul>
+</div>
+
 <h1>Create new suite</h1>
 
 <div class="row-fluid">

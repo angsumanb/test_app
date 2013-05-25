@@ -3,11 +3,14 @@ class StaticPagesController < ApplicationController
   respond_to :html, :json, :xml
 
   before_filter :find_runs, only: [:dashboard, :dashboard1]
-
+  before_filter :signed_in_user, only: [:dashboard, :dashboard1]
  
   def home
   end
 
+  def pendingstuff 
+  end
+  
   def help
   end
 
@@ -30,6 +33,8 @@ class StaticPagesController < ApplicationController
     respond_with(@passed)
     end
   end
+#PendingStuff 
+# integrate dashboard and dashboard1
   def dashboard1
    if (@runs.size > 0)
 #    @latestRun = Testrun.first(order: 'created_at DESC')

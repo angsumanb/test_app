@@ -1,5 +1,11 @@
 <% provide(:title,"Suite #{@suite.name}") %>
-
+<div>
+<ul class="breadcrumb">
+                   <li> <%=link_to @suite.pod.project.name, @suite.pod.project %>  <span class="divider">/</span></li>
+                   <li> <%=link_to @suite.pod.name, @suite.pod %>  <span class="divider">/</span></li>
+                   <li class="active"> <%= @suite.name %> </li>
+                </ul>
+</div>
 <h1>Suite -
 <%= @suite.name %></h1>
 <% content_for :sidebar do %>
@@ -8,7 +14,7 @@
 	<% end %>
 </li>
 <li>
-	<%= link_to edit_suite_path(params[:id]) do %> <i class="icon-wrench"></i> Edit suite details
+	<%= link_to edit_suite_path(params[:id]) do %> <i class="icon-edit"></i> Edit suite details
 	<% end %>
 </li>
 <li>

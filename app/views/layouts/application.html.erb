@@ -28,16 +28,21 @@
           	<i class="icon-th-large"></i> Dashboard
                 		<%end%>
           </li>
+         <li><%= link_to    pendingstuff_path do %>
+                <i class="icon-pencil"></i> Pending Stuff
+                                <%end%>
+          </li>
+ <% if signed_in? %>
           	<li class="active"><a href='#'><i class="icon-chevron-right"></i> Actions</a></li>
           
+      <% end %>
           	 
-          </li>
           
           <%= yield :sidebar %>
           
         </ul>
       </div>
-       
+   
        <div class="span9">
          <div class="body">
       <% flash.each do |key, value| %>

@@ -1,5 +1,10 @@
 <% provide(:title, 'Create new testrun') %>
-
+<div>
+<ul class="breadcrumb">
+                   <li> <%=link_to "Testruns", testruns_path %>  <span class="divider">/</span></li>
+                   <li class="active"> Create new testrun  </li>
+                </ul>
+</div>
 <h1>Create new testrun</h1>
 
 <div class="row-fluid">
@@ -16,30 +21,38 @@
    
   </div>
 
-  <div class="span6">
+  <div class="span7">
      <h3>Testrun Testcases</h3>
 	<a href="#" class="selectAll">Select All</a> 
 	<a href="#" class="unselectAll">Unselect All</a> 
+          <div class="row-fluid">
+          <div class="span11 offset1">
           <% Pod.all.each do |pod| %> 
             <h3>    <%= pod.name %> </h3>
             <div class="pod">    <a href="#" class="selectAllFromPod">Select All from this pod</a> 
+            <div class="row-fluid">
+              <div class="span11 offset1">
             <% pod.suites.all.each do |suite| %>
            <ul> <h4>    <%= suite.name %> </h4>
+                <div class="row-fluid">
+              <div class="span11 offset1">
 
-        	 <div>
       		  <% suite.testcases.all.each do |testcase| %>
           	 <li>     <%= testcase.title %>
            	      <%= check_box_tag :testcase_ids, testcase.id, @testrun.testcases.include?(testcase), :name => 'testrun[testcase_ids[]' %> </br> </li>
      		  <% end %>
-        	 </div> </ul>
+        	 </div></div> </ul>
             <% end %>
+                 </div> </div> 
          </div>
         <% end %>
+         </div>
+         </div>
 	<a href="#" class="selectAll">Select All</a> 
 	<a href="#" class="unselectAll">Unselect All</a> 
   </div>
 </br>
-  <div class="span3">
+  <div class="span2">
       <%= f.submit "Create new testrun", class: "btn btn-primary" %>
     <% end %>
   </div>

@@ -37,6 +37,7 @@ TestApp::Application.routes.draw do
   match '/contact', to: 'static_pages#contact' 
   match '/dashboard', to: 'static_pages#dashboard' 
   match '/dashboard1', to: 'static_pages#dashboard1' 
+  match '/pendingstuff',    to: 'static_pages#pendingstuff'
 
 
 

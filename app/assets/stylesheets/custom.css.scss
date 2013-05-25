@@ -16,6 +16,7 @@ section {
 
 textarea {
   resize: vertical;
+  height: 15em;
 }
 
 .center {
@@ -163,7 +164,7 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea,  .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   padding: 10px;
@@ -395,4 +396,10 @@ aside {
 }
 .page-sidebar > ul > li.dropdown.active:after {
   background-position: 0 -676px;
+}
+
+
+/* custom hero unit for testcase new and show page */
+.hero-unit-custom {
+  background-color: rgb(179, 200, 190);
 }

@@ -1,7 +1,10 @@
 <% provide(:title,"Pod #{@pod.name}") %>
-
-     <h1>Project - 
-      <%= @pod.project.name %></h1>
+<div>
+<ul class="breadcrumb">
+                   <li> <%=link_to @pod.project.name, @pod.project %>  <span class="divider">/</span></li>
+                   <li class="active"> <%= @pod.name %>  </li>
+                </ul>
+</div>
      
      <%content_for :sidebar do %> 
      
@@ -11,7 +14,7 @@
      	<% end %>
      </li>
      <li> <%= link_to  edit_pod_path(params[:id]) do %>
-     	<i class="icon-wrench"></i> Edit pod details
+     	<i class="icon-edit"></i> Edit pod details
      	<% end %>
      </li>
        <li> <%= link_to new_suite_path(pod_id: @pod.id) do %>
@@ -22,8 +25,6 @@
        <% end %>
      
 
-      <h1>Pod - 
-      <%= @pod.name %></h1>
        
 
  

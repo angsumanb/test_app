@@ -8,13 +8,13 @@
           	<i class="icon-home icon-white"></i> Home
                 		<%end%>
           </li>
+	   <% if signed_in? %>
           <li><%= link_to     dashboard_path  do%>
           	<i class="icon-th-large icon-white"></i> Dashboard
                 		<%end%>
           </li>
 
 
-	   <% if signed_in? %>
             <li><%= link_to projects_path do %>
             	<i class="icon-home icon-white"></i> Projects
                 		<%end%>

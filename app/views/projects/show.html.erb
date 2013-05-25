@@ -1,9 +1,12 @@
 <% provide(:title,"Project #{@project.name}") %>
-
-      <h1>Project - 
-      <%= @project.name %></h1>
+<div>
+<ul class="breadcrumb">
+                   <li class="active"> <%= @project.name %>  </li>
+                </ul>
+</div>
       <% content_for :sidebar do %>
-       <li> <%= link_to "Edit project details", edit_project_path(params[:id]) %></li>
+
+       <li> <%= link_to  edit_project_path(params[:id]) do %><i class="icon-edit"></i> Edit project details<%end%></li>
        <li> <%= link_to "Create new Pod", new_pod_path(project_id: @project.id) %></li>
   <% end %>
 

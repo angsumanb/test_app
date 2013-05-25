@@ -1,46 +1,15 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span3">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-      </section>
-    </aside>
-  <div class="span9">
-    Pending stuff</br>
-          - Pod wise break of pending test cases
-          - have a common placeholder for h1 heading on all pages and yield in that
-          - HIGHCHARTS LICENSING $390 for single user.. http://shop.highsoft.com/highcharts.html</br>
-          - Use Json and parse through jQuery</br>
-          - Add css on the testrun new page to have bars across</br>
-          - Add test cases to existing testruns</br>
-          - DONE - Add dashboard to see the current testrun status </br>
-          - Testrun show page - remove table headings when the suite does not have any testcase in the testrun </br>
-          - Make web services for everything </br>
-          - Add modals for creation and deletion </br>
-          - Add comments field to testresults </br>
-          - Add an attibute to show on the dashboard if there is a critical issue found </br>
-          - DONE - Make layout fluid </br>
-          - Ajax testing with Jasmine </br>
-          - DONE -  segregate test cases by pods/suites </br>
-          - DONE - optimize code in testresults controller 4->1 functions </br>
-          -    </br>
-  </div>  
-</div>  
+<h1>Home</h1>
 <% else %>
   <div class="center hero-unit">
-    <h1>Welcome to the Sample App</h1>
+    <h1>Welcome to the</br> Testcase Management System</h1>
 
     <h2>
-      This is the home page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-      sample application.
     </h2>
 
     <%= link_to "Sign up now!", signup_path, 
                                 class: "btn btn-large btn-primary" %>
   </div>
 
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+  <% link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %> 

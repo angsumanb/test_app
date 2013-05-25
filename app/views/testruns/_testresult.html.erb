@@ -37,7 +37,7 @@
 			
 		 <tr>
 		   <td><%= @testrun.id %> /<%= testcase.id %> / <%= testresult.id  %></td>
-		   <td><%= testcase.title %></td>
+		   <td><%= link_to testcase.title, testcase  %> </td>
 		   <td><%= testcase.testtype %></td>
 		   <td><%= testcase.priority %></td>
 		   <td><span id=testresult><%= testresult.status %></span></td>

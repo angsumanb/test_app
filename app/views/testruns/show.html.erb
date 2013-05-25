@@ -1,9 +1,15 @@
 <% provide(:title,"Testrun #{@testrun.name}") %>
 
+<div>
+<ul class="breadcrumb">
+                   <li> <%=link_to "Testruns", testruns_path %>  <span class="divider">/</span></li>
+                   <li class="active"> <%= @testrun.name %>  </li>
+                </ul>
+</div>
 <% content_for :sidebar do %>
 <li>
 	<%= link_to  edit_testrun_path(params[:id]) do%>
-                	<i class="icon-home"></i> Edit testrun details
+                	<i class="icon-edit"></i> Edit testrun details
                 		<%end%>
 </li>
 <li>
@@ -13,8 +19,8 @@
 </li>
 
 <% end %>
-<h1>Testrun -
-<%= @testrun.name %></h1>
+<h3>Testrun -
+<%= @testrun.name %></h3>
 
 <%= render "testresult"  %>
 
