@@ -7,4 +7,6 @@ class Project < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false } 
   validates :description, presence: true
+
+  default_scope order: 'projects.created_at DESC'
 end

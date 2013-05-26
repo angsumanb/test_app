@@ -19,41 +19,43 @@
       <%= f.label :description %>
       <%= f.text_area :description, size: "40*20" %>  
    
+      <%= f.submit "Create new testrun", class: "btn btn-primary" %>
+   
   </div>
 
   <div class="span7">
      <h3>Testrun Testcases</h3>
 	<a href="#" class="selectAll">Select All</a> 
 	<a href="#" class="unselectAll">Unselect All</a> 
+          <table class="table table-bordered">
           <div class="row-fluid">
           <div class="span11 offset1">
           <% Pod.all.each do |pod| %> 
+          <table class="table table-bordered">
             <h3>    <%= pod.name %> </h3>
             <div class="pod">    <a href="#" class="selectAllFromPod">Select All from this pod</a> 
             <div class="row-fluid">
               <div class="span11 offset1">
             <% pod.suites.all.each do |suite| %>
+                  <% if suite.testcases.size > 0 %>
            <ul> <h4>    <%= suite.name %> </h4>
                 <div class="row-fluid">
               <div class="span11 offset1">
-
       		  <% suite.testcases.all.each do |testcase| %>
-          	 <li>     <%= testcase.title %>
-           	      <%= check_box_tag :testcase_ids, testcase.id, @testrun.testcases.include?(testcase), :name => 'testrun[testcase_ids[]' %> </br> </li>
+          	     - <%= testcase.title %>
+           	      <%= check_box_tag :testcase_ids, testcase.id, @testrun.testcases.include?(testcase), :name => 'testrun[testcase_ids[]' %> </br> 
      		  <% end %>
-        	 </div></div> </ul>
+        	 </div></div> </ul> <% end %>
             <% end %>
                  </div> </div> 
-         </div>
+         </div></table>
         <% end %>
-         </div>
-         </div>
+         </div></div></table>
 	<a href="#" class="selectAll">Select All</a> 
 	<a href="#" class="unselectAll">Unselect All</a> 
   </div>
 </br>
   <div class="span2">
-      <%= f.submit "Create new testrun", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

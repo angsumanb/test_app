@@ -1,29 +1,74 @@
-<% provide(:title, "Edit testcase") %> 
+<% provide(:title, "Edit testcase") %>
+<div>
+	<ul class="breadcrumb">
+		<li>
+			<%= link_to @testcase.suite.pod.project.name, @testcase.suite.pod.project %> <span class="divider">/</span>
+		</li>
+		<li>
+			<%= link_to @testcase.suite.pod.name, @testcase.suite.pod %> <span class="divider">/</span>
+		</li>
+		<li>
+			<%= link_to @testcase.suite.name, @testcase.suite %> <span class="divider">/</span>
+		</li>
+		<li class="active">
+			Testcase:  <%= @testcase.id %>
+		</li>
+	</ul>
+</div>
 <h1>Update testcase details</h1>
+<div class="row-fluid">
+	<div class="span12">
+		<%= form_for(@testcase) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@testcase) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+		<div class="input-prepend">
+			<span class="add-on">Title</span>
+			<%= f.text_field :title, class: "input-xxlarge" %>
+		</div>
+		<div>
+			<p></p>
+		</div>
+		<div class="row-fluid">
+			<div class="span4">
+				<div class="input-prepend">
+					<span class="add-on">Testtype</span>
+					<%= f.select :testtype,  Testcase::TTOPTIONS %>
+				</div>
+			</div>
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
+			<div class="span4">
+				<div class="input-prepend">
+					<span class="add-on">Priority</span>
+					<%= f.select :priority,  Testcase::PROPTIONS %>
+				</div>
+			</div>
 
+			<div class="span4">
+				<div class="input-prepend">
+					<span class="add-on">Estimate</span>
+					<%= f.text_field :estimate %>
+					<span class="add-on">Hr</span>
+				</div>
+			</div>
+		</div>
 
-      <%= f.label :testtype %>
-      <%= f.select :testtype,  Testcase::TTOPTIONS %>
+		<div class="row-fluid">
+			<div class="span12">
+				<p></p>
+				<div class="input-prepend">
+					<span class="add-on">Steps</span>
 
-      <%= f.label :priority %>
-      <%= f.select :priority,  Testcase::PROPTIONS %>
+					<%= f.text_area :steps, class: "input-xxlarge" %>
+				</div>
+			</div>
 
-      <%= f.label :estimate %>
-      <%= f.text_field :estimate %>
-
-      <%= f.label :steps %>
-      <%= f.text_area :steps, size: "40*20" %>
-</br>
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
-
-  </div>
+		</div>
+		</br>
+		<div class="row-fluid">
+			<div class="span11 offset1">
+				<%= f.submit "Save changes", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

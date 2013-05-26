@@ -12,7 +12,7 @@ class Testcase < ActiveRecord::Base
   TTOPTIONS = ['Functionality', 'Regression', 'Performance', 'Usability', 'Other']
   PROPTIONS = ['High', 'Medium', 'Low', 'Unknown']
 
-  validates :title, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
+  validates :title, presence: true, length: { maximum: 200 }, uniqueness: { case_sensitive: false }
 
   validates :steps, presence: true
   validates :testtype, presence: true
@@ -22,4 +22,5 @@ class Testcase < ActiveRecord::Base
 
   validates :suite_id, presence: true
 
+  default_scope order: 'testcases.created_at DESC'
 end
