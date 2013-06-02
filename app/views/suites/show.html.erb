@@ -10,11 +10,11 @@
 <%= @suite.name %></h1>
 <% content_for :sidebar do %>
 <li>
-	<%= link_to  pod_path(@suite.pod) do %> <i class="icon-arrow-left"></i> Back to pod
+	<%= link_to  pod_path(@suite.pod) do %> <i class="icon-arrow-left"></i> Back to Pod
 	<% end %>
 </li>
 <li>
-	<%= link_to edit_suite_path(params[:id]) do %> <i class="icon-edit"></i> Edit suite details
+	<%= link_to edit_suite_path(params[:id]) do %> <i class="icon-edit"></i> Edit Suite details
 	<% end %>
 </li>
 <li>

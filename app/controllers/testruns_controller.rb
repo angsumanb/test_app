@@ -6,7 +6,13 @@ class TestrunsController < ApplicationController
   def show
     @testrun = Testrun.find(params[:id])
     @testcases = Testcase.find(:all) #do I need this #pendingStuff
-#    @pods = @testrun.pods.paginate(page: params[:page])
+    @testruntestcases = @testrun.testcases
+    @testruntestresults = @testrun.testresults
+
+#PendingStuff - Need to find suites and pods corresonding to all the testcases that
+#               are there in the current testrun
+
+
   end
 
   def new

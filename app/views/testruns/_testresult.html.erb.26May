@@ -3,8 +3,9 @@
   
   
 	<!-- Putting all the testcases for that run in one array, so that we do not have to hit the database everytime -->
-            <!-- moved to the controller -->
-
+	<% testruntestcases = @testrun.testcases %>
+	<% testruntestresults = @testrun.testresults %>
+  
 	<!-- Adding Accordian collapsible -->
     <div class="accordion" id="accordion2">
 	<% Pod.all.each do |pod| %>
@@ -28,11 +29,11 @@
 		   <th>Change Status</th>
 		 </tr>
 		    <% suite.testcases.all.each do |testcase| %>
-		      <% if(@testruntestcases.include?(testcase)) %>
+		      <% if(testruntestcases.include?(testcase)) %>
 			<!-- #PendingStuff - add an index for testcase_id in testresults table -->
 			<%# testresult = @testrun.testresults.find(:all,  :conditions => ["testcase_id = ? ", testcase.id]).first %> 
 			<!-- The next line is better than above because we are searching through an array rather than querying the database everytime -->
-			<% testresult = @testruntestresults.find(:all,  :conditions => ["testcase_id = ? ", testcase.id]).first %> 
+			<% testresult = testruntestresults.find(:all,  :conditions => ["testcase_id = ? ", testcase.id]).first %> 
 			
 		 <tr>
 		   <td><%= @testrun.id %> /<%= testcase.id %> / <%= testresult.id  %></td>

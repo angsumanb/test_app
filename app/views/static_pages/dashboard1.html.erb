@@ -87,23 +87,23 @@ $(function () {
 
     <tr class="alert alert-info">
       <th>Total Testcases:</th>
-      <td id="total"><%= @totalcases %></td>
+      <td style="text-align:right"><%= @totalcases %></td>
       </tr>
     <tr class="alert alert-success">
       <th>Passed:</th>
-      <td id="passed"><%= @passed.count %></td>
+      <td style="text-align:right"><%= @passed.count %></td>
     </tr>
     <tr class="alert alert-danger">
       <th>Failed:</th>
-      <td id="failed"><%= @failed.count %></td>
+      <td style="text-align:right"><%= @failed.count %></td>
     </tr>
     <tr class="alert alert-warning">
       <th>Pending:</th>
-      <td id="pending"><%= @pending.count %></td>
+      <td style="text-align:right"><%= @pending.count %></td>
     </tr>
     <tr class="alert alert-error">
       <th>Blocked:</th>
-      <td id="blocked"><%= @blocked.count %></td>
+      <td style="text-align:right"><%= @blocked.count %></td>
     </tr>
 
   </table>

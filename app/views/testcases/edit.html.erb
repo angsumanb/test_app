@@ -11,10 +11,18 @@
 			<%= link_to @testcase.suite.name, @testcase.suite %> <span class="divider">/</span>
 		</li>
 		<li class="active">
-			Testcase:  <%= @testcase.id %>
+			Testcase #<%= @testcase.id %>
 		</li>
 	</ul>
 </div>
+
+<% content_for :sidebar do %>
+<li>
+        <%= link_to  suite_path(@testcase.suite) do %> <i class="icon-arrow-left"></i> Back to suite
+        <% end %>
+</li>
+<% end %>
+
 <h1>Update testcase details</h1>
 <div class="row-fluid">
 	<div class="span12">

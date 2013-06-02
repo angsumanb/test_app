@@ -10,11 +10,11 @@
      
      <li> 
      	<%= link_to  project_path(@pod.project) do %>
-     	<i class="icon-arrow-left"></i> Back to project
+     	<i class="icon-arrow-left"></i> Back to Project
      	<% end %>
      </li>
      <li> <%= link_to  edit_pod_path(params[:id]) do %>
-     	<i class="icon-edit"></i> Edit pod details
+     	<i class="icon-edit"></i> Edit Pod details
      	<% end %>
      </li>
        <li> <%= link_to new_suite_path(pod_id: @pod.id) do %>
