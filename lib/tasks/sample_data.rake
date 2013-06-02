@@ -3,13 +3,13 @@ namespace :db do
 #  @@m = 1
   task populate: :environment do
     admin = User.create!(name: "Example User",
-                 email: "example@railstutorial.org",
+                 email: "admin@django.org",
                  password: "foobar",
                  password_confirmation: "foobar")
     admin.toggle!(:admin)
     39.times do |n|
       name  = Faker::Name.name
-      email = "example-#{n+1}@railstutorial.org"
+      email = "example-#{n+1}@django.org"
       password  = "password"
       User.create!(name: name,
                    email: email,
@@ -17,7 +17,7 @@ namespace :db do
                    password_confirmation: password)
     end
   
-   39.times do |n|
+   3.times do |n|
       name  = Faker::Name.name
       description = "project-#{n+1} description"
       Project.create!(name: name,
@@ -25,7 +25,7 @@ namespace :db do
     end
  
    projects = Project.all(limit: 6)
-   39.times do |n|
+   3.times do |n|
       name1 = Faker::Name.name
       name = "pod-#{n+1}"
       _m = 1
@@ -37,7 +37,7 @@ namespace :db do
     end
 
     pods = Pod.all(limit: 6)
-   39.times do |n|
+   6.times do |n|
       name = "Suite-#{n+1}"
       _m = 1
       description = Faker::Lorem.sentence(5)
@@ -48,7 +48,7 @@ namespace :db do
     end
 
     suites = Suite.all(limit: 6)
-   39.times do |n|
+   6.times do |n|
       title = "Testcase-#{n+1}"
       _m = 1
       steps = Faker::Lorem.sentence(5)
