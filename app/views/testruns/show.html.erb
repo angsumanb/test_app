@@ -1,25 +1,29 @@
 <% provide(:title,"Testrun #{@testrun.name}") %>
 
 <div>
-<ul class="breadcrumb">
-                   <li> <%=link_to "Testruns", testruns_path %>  <span class="divider">/</span></li>
-                   <li class="active"> <%= @testrun.name %>  </li>
-                </ul>
+	<ul class="breadcrumb">
+		<li>
+			<%= link_to "Testruns", testruns_path %> <span class="divider">/</span>
+		</li>
+		<li class="active">
+			<%= @testrun.name %>
+		</li>
+	</ul>
 </div>
 <% content_for :sidebar do %>
 <li>
-        <%= link_to  testruns_path do %> <i class="icon-arrow-left"></i> Back to Testruns 
-        <% end %>
+	<%= link_to  testruns_path do %> <i class="icon-arrow-left"></i> Back to Testruns
+	<% end %>
 </li>
 <li>
 	<%= link_to  edit_testrun_path(params[:id]) do%>
-                	<i class="icon-edit"></i> Edit testrun details
-                		<%end%>
+	<i class="icon-edit"></i> Edit testrun details
+	<%end%>
 </li>
 <li>
 	<%= link_to  '#' do%>
-                	<i class="icon-plus-sign"></i> Add testcases
-                		<%end%>
+	<i class="icon-plus-sign"></i> Add testcases
+	<%end%>
 </li>
 
 <% end %>

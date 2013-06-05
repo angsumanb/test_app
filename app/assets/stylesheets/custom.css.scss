@@ -63,11 +63,12 @@ p {
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
+  letter-spacing: 2px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
+  font-family: "Times New Roman";
+ /* text-transform: uppercase;*/
 }
 
 #logo:hover {
