@@ -3,7 +3,7 @@ namespace :db do
 #  @@m = 1
   task populate: :environment do
     admin = User.create!(name: "Example User",
-                 email: "admin@django.org",
+                 email: "admin@testit.org",
                  password: "foobar",
                  password_confirmation: "foobar")
     admin.toggle!(:admin)
