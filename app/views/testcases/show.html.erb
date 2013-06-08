@@ -161,6 +161,36 @@
 						<%= f.text_area :steps, class: "input-xxlarge", disabled: "true" %>
 					</div>
 				</div>
+				<div class="span4">
+<p></p>
+                  <div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+         Attachments (<%= @attachmentCount %>) 
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <table class="table table-striped  table-hover" >
+                 <% if @testcase.photo? %>
+                                    <tr class="alert alert-info">
+<td> <%= link_to image_tag(@testcase.photo.url(:small)), @testcase.photo.url(:original), :popup=>['original_image', 'height=700,width=900'] %> </td>
+                                    </tr>
+                 <% end %>
+                 <% if @testcase.zip? %>
+
+                                    <tr><td>
+                                                        <%= link_to @testcase.zip_file_name, @testcase.zip.url %>
+                                                </td></tr>
+                 <% end %>
+
+                                 </table>
+      </div>
+    </div>
+  </div>
+  </div>
+				</div>
 			</div>
 			<% end %>
 
@@ -174,7 +204,7 @@
 		<div class="span6">
 			<div id="container" style="width:70%; height:200px;"></div>
 		</div>
-		<div class="span2">
+		<div class="span3">
 			<% testresults = @testcase.testresults %>
 			<table class="table table-striped  table-hover" >
 
@@ -186,9 +216,6 @@
 
 				<% end %>
 			</table>
-
-		</div>
-		<div class="span4">
 
 		</div>
 	</div>
